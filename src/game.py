@@ -22,3 +22,4 @@ class Game:
                     sys.exit()
 
             self.drawing.draw_grid(screen)
+            self.drawing.draw_pieces(screen, self.board)
