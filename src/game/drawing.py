@@ -8,14 +8,25 @@ class Drawing:
         pass
 
     def draw_grid(self, screen):
-        for i in range(1, NB_COLUMN):
+        for i in range(NB_COLUMN_ROW):
             pygame.draw.line(screen, WHITE, (i * SCREEN_SIZE // 3, 0), (i * SCREEN_SIZE // 3, SCREEN_SIZE), 5)
 
-        for i in range(1, NB_ROW):
+        for i in range(NB_COLUMN_ROW):
             pygame.draw.line(screen, WHITE, (0, i * SCREEN_SIZE // 3), (SCREEN_SIZE, i * SCREEN_SIZE // 3), 5)
 
         pygame.display.update()
     
     def draw_pieces(self, screen, board):
-        red_circle = pygame.transform.scale(pygame.image.load(os.path.join("img", "red.png")), (100, 100))
-        yellow_circle = pygame.transform.scale(pygame.image.load(os.path.join("img", "yellow.png")), (100, 100))
+        size = SCREEN_SIZE / NB_COLUMN_ROW
+
+        for i in range(NB_COLUMN_ROW):
+            for j in range(NB_COLUMN_ROW):
+                x = int(i * size)
+                y = int(j * size)
+
+                if board[i][j] == 1:
+                    pygame.draw.circle(screen, RED, (x + size // 2, y + size // 2), size // 2 - 25)
+                
+                if board[i][j] == 2:
+                    pygame.draw.circle(screen, YELLOW, (x + size // 2, y + size // 2), size // 2 - 25)
+                

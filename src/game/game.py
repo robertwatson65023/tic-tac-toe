@@ -6,7 +6,7 @@ from game.drawing import *
 
 class Game:
     def __init__(self) -> None:
-        self.board = tableau = [[0 for j in range(NB_COLUMN)] for i in range(NB_ROW)]
+        self.board = tableau = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
         self.drawing = Drawing()
 
     def launch(self):
