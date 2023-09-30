@@ -1,8 +1,8 @@
 import pygame
 import sys
 
-from const import *
-from drawing import *
+from game.const import *
+from game.drawing import *
 
 class Game:
     def __init__(self) -> None:

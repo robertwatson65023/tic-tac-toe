@@ -1,7 +1,7 @@
 import pygame
 import os
 
-from const import *
+from game.const import *
 
 class Drawing:
     def __init__(self) -> None:
@@ -17,5 +17,5 @@ class Drawing:
         pygame.display.update()
     
     def draw_pieces(self, screen, board):
-        red_circle = pygame.transform.scale(pygame.image.load(os.path.join("src/img", "red.png")), (100, 100))
-        yellow_circle = pygame.transform.scale(pygame.image.load(os.path.join("src/img", "yellow.png")), (100, 100))
+        red_circle = pygame.transform.scale(pygame.image.load(os.path.join("img", "red.png")), (100, 100))
+        yellow_circle = pygame.transform.scale(pygame.image.load(os.path.join("img", "yellow.png")), (100, 100))
