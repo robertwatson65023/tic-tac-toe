@@ -5,3 +5,4 @@ NB_COLUMN_ROW = 3
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 YELLOW = (254, 254, 51)
+BLUE = (0, 0, 255)

@@ -9,6 +9,7 @@ class Game:
         self.board = tableau = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
         self.drawing = Drawing()
         self.turn = 1
+        self.end = False
 
     def launch(self):
         pygame.init()
@@ -22,7 +23,7 @@ class Game:
                     pygame.quit()
                     sys.exit()
             
-                if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.type == pygame.MOUSEBUTTONDOWN and self.end != True:
                     if event.button == 1:
                         pos = pygame.mouse.get_pos()
 
@@ -55,12 +56,17 @@ class Game:
                         
                         if self.turn == 2:
                             self.modify_board(column, row, self.turn)
-
+            
             self.drawing.draw_grid(screen)
             self.drawing.draw_pieces(screen, self.board)
             
             if self.check_align() != None:
-                pass
+                self.end = True
+
+                start, end = self.check_align()
+                self.drawing.draw_line(screen, start, end)
+            
+            pygame.display.update()
     
     def modify_board(self, column, row, value):
         if self.board[column][row] == 0:
@@ -82,12 +88,12 @@ class Game:
                     return s, e
                 
                 if i == 0:
-                    if self.board[1][1] == to_check and self.board[2][2]:
+                    if self.board[1][1] == to_check and self.board[2][2] == to_check:
                         s, e = [0, 0], [2, 2]
                         return s, e
                 
                 if i == 2:
-                    if self.board[1][1] == to_check and self.board[0][2]:
+                    if self.board[1][1] == to_check and self.board[0][2] == to_check:
                         s, e = [2, 0], [0, 2]
                         return s, e
                             
