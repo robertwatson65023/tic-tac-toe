@@ -58,6 +58,9 @@ class Game:
 
             self.drawing.draw_grid(screen)
             self.drawing.draw_pieces(screen, self.board)
+            
+            if self.check_align() != None:
+                pass
     
     def modify_board(self, column, row, value):
         if self.board[column][row] == 0:
@@ -68,3 +71,30 @@ class Game:
             
             else:
                 self.turn = 1
+    
+    def check_align(self):
+        for i in range(NB_COLUMN_ROW):
+            if self.board[i][0] != 0:
+                to_check = self.board[i][0]
+
+                if self.board[i][1] == to_check and self.board[i][2] == to_check:
+                    s, e = [i, 0], [i, 2]
+                    return s, e
+                
+                if i == 0:
+                    if self.board[1][1] == to_check and self.board[2][2]:
+                        s, e = [0, 0], [2, 2]
+                        return s, e
+                
+                if i == 2:
+                    if self.board[1][1] == to_check and self.board[0][2]:
+                        s, e = [2, 0], [0, 2]
+                        return s, e
+                            
+            if self.board[0][i] != 0:
+                to_check = self.board[0][i]
+
+                if self.board[1][i] == to_check and self.board[2][i] == to_check:
+                    s, e = [0, i], [2, i]
+                    return s, e
+
