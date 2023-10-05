@@ -104,4 +104,3 @@ class Game:
                 if self.board[1][i] == to_check and self.board[2][i] == to_check:
                     s, e = [0, i], [2, i]
                     return s, e
-
