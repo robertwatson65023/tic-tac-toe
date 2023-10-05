@@ -15,6 +15,7 @@ class Game:
         pygame.init()
 
         screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
+        screen.fill(BACKGROUND_COLOR)
         pygame.display.set_caption("Tic Tac Toe")
 
         while True:

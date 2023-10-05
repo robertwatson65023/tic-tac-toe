@@ -9,10 +9,10 @@ class Drawing:
 
     def draw_grid(self, screen):
         for i in range(1, NB_COLUMN_ROW):
-            pygame.draw.line(screen, WHITE, (i * SCREEN_SIZE // 3, 0), (i * SCREEN_SIZE // 3, SCREEN_SIZE), 5)
+            pygame.draw.line(screen, LINES_COLOR, (i * SCREEN_SIZE // 3, 0), (i * SCREEN_SIZE // 3, SCREEN_SIZE), 5)
 
         for i in range(1, NB_COLUMN_ROW):
-            pygame.draw.line(screen, WHITE, (0, i * SCREEN_SIZE // 3), (SCREEN_SIZE, i * SCREEN_SIZE // 3), 5)
+            pygame.draw.line(screen, LINES_COLOR, (0, i * SCREEN_SIZE // 3), (SCREEN_SIZE, i * SCREEN_SIZE // 3), 5)
     
     def draw_pieces(self, screen, board):
         size = SCREEN_SIZE / NB_COLUMN_ROW
