@@ -23,7 +23,7 @@ class Drawing:
                 y = int(j * size)
 
                 if board[i][j] == 1:
-                    pygame.draw.circle(screen, RED, (x + size // 2, y + size // 2), size // 2 - 25)
+                    pygame.draw.circle(screen, LIGHT_BLUE, (x + size // 2, y + size // 2), size // 2 - 25)
                 
                 if board[i][j] == 2:
                     pygame.draw.circle(screen, YELLOW, (x + size // 2, y + size // 2), size // 2 - 25)
@@ -35,4 +35,4 @@ class Drawing:
         x_end = SCREEN_SIZE // NB_COLUMN_ROW * (end[0] + 1) - SCREEN_SIZE // NB_COLUMN_ROW // 2
         y_end = SCREEN_SIZE // NB_COLUMN_ROW * (end[1] + 1) - SCREEN_SIZE // NB_COLUMN_ROW // 2
 
-        pygame.draw.line(screen, BLUE, (x_start, y_start), (x_end, y_end), 5)
+        pygame.draw.line(screen, DARK_BLUE, (x_start, y_start), (x_end, y_end), 5)
