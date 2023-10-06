@@ -15,6 +15,9 @@ class Drawing:
             pygame.draw.line(screen, GRID_COLOR, (0, i * SCREEN_SIZE // 3), (SCREEN_SIZE, i * SCREEN_SIZE // 3), 5)
     
     def draw_pieces(self, screen, board):
+        blue_circle = pygame.transform.scale(pygame.image.load("img/blue.png"), (70, 70))
+        yellow_circle = pygame.transform.scale(pygame.image.load("img/yellow.png"), (70, 70))
+
         size = SCREEN_SIZE / NB_COLUMN_ROW
 
         for i in range(NB_COLUMN_ROW):
@@ -23,10 +26,10 @@ class Drawing:
                 y = int(j * size)
 
                 if board[i][j] == 1:
-                    pygame.draw.circle(screen, LIGHT_BLUE, (x + size // 2, y + size // 2), size // 2 - 25)
+                    screen.blit(blue_circle, (x + size // 2 - 35, y + size // 2 - 35))
                 
                 if board[i][j] == 2:
-                    pygame.draw.circle(screen, YELLOW, (x + size // 2, y + size // 2), size // 2 - 25)
+                    screen.blit(yellow_circle, (x + size // 2 - 35, y + size // 2 - 35))
     
     def draw_line(self, screen, start, end):
         x_start = SCREEN_SIZE // NB_COLUMN_ROW * (start[0] + 1) - SCREEN_SIZE // NB_COLUMN_ROW // 2
