@@ -1,5 +1,5 @@
+import sys
 import pygame
-import os
 
 from game.const import *
 
@@ -17,7 +17,6 @@ class Drawing:
     def draw_pieces(self, screen, board):
         blue_circle = pygame.transform.scale(pygame.image.load("img/blue.png"), (70, 70))
         yellow_circle = pygame.transform.scale(pygame.image.load("img/yellow.png"), (70, 70))
-
         size = SCREEN_SIZE / NB_COLUMN_ROW
 
         for i in range(NB_COLUMN_ROW):
@@ -39,3 +38,22 @@ class Drawing:
         y_end = SCREEN_SIZE // NB_COLUMN_ROW * (end[1] + 1) - SCREEN_SIZE // NB_COLUMN_ROW // 2
 
         pygame.draw.line(screen, DARK_BLUE, (x_start, y_start), (x_end, y_end), 5)
+    
+    def end_screen(self, screen):
+        screen.fill(BACKGROUND_COLOR)
+        font = pygame.font.Font("game/font/Roboto-Regular.ttf", 25)
+        text = font.render("Press space key to play again!", True, (255,255,255))
+        text_rect = text.get_rect()
+        text_rect.center = (SCREEN_SIZE // 2, SCREEN_SIZE // 2)
+        screen.blit(text, text_rect)
+        pygame.display.update()
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    return True
+                    

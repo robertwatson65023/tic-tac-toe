@@ -1,19 +1,19 @@
 import pygame
 import sys
+import time
 
 from game.const import *
 from game.drawing import *
 
 class Game:
     def __init__(self) -> None:
-        self.board = tableau = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
+        self.board = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
         self.drawing = Drawing()
         self.turn = 1
         self.end = False
 
     def launch(self):
         pygame.init()
-
         screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
         screen.fill(BACKGROUND_COLOR)
         pygame.display.set_caption("Tic Tac Toe")
@@ -57,18 +57,30 @@ class Game:
                         
                         if self.turn == 2:
                             self.modify_board(column, row, self.turn)
+                
+                    pygame.display.update()
             
-            self.drawing.draw_grid(screen)
-            self.drawing.draw_pieces(screen, self.board)
+            if self.end != True:
+                self.drawing.draw_grid(screen)
+                self.drawing.draw_pieces(screen, self.board)
+                pygame.display.update()
             
             if self.check_align() != None:
-                self.end = True
-
                 start, end = self.check_align()
-                self.drawing.draw_line(screen, start, end)
-            
-            pygame.display.update()
-    
+
+                if self.end != True:
+                    self.drawing.draw_line(screen, start, end)
+
+                self.end = True
+                pygame.display.update()
+                time.sleep(1)
+                play_again = self.drawing.end_screen(screen)
+                
+                if play_again:
+                    self.board = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
+                    self.end = False
+                    self.launch()
+
     def modify_board(self, column, row, value):
         if self.board[column][row] == 0:
             self.board[column][row] = value
