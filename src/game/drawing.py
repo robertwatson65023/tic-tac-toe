@@ -41,7 +41,7 @@ class Drawing:
     
     def end_screen(self, screen):
         screen.fill(BACKGROUND_COLOR)
-        font = pygame.font.Font("game/font/Roboto-Regular.ttf", 25)
+        font = pygame.font.Font("font/Roboto-Regular.ttf", 25)
         text = font.render("Press space key to play again!", True, (255,255,255))
         text_rect = text.get_rect()
         text_rect.center = (SCREEN_SIZE // 2, SCREEN_SIZE // 2)
