@@ -4,8 +4,9 @@ import pygame
 from game.const import *
 
 class Drawing:
-    def __init__(self) -> None:
-        pass
+    """
+    Class that groups the methods that allow to draw something (lines, text...) on the screen.
+    """
 
     def draw_grid(self, screen):
         """
@@ -79,7 +80,7 @@ class Drawing:
 
         This method displays an end screen prompting to play again and waits for the player's input.
         """
-        
+
         screen.fill(BACKGROUND_COLOR)
         font = pygame.font.Font("font/Roboto-Regular.ttf", 25)
         text = font.render("Press space key to play again!", True, (255,255,255))

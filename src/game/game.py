@@ -11,6 +11,9 @@ class Game:
     """
 
     def __init__(self) -> None:
+        """
+        Initialize the game instance.
+        """
         self.board = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
         self.drawing = Drawing()
         self.turn = 1
