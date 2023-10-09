@@ -14,6 +14,7 @@ class Game:
         """
         Initialize the game instance.
         """
+        
         self.board = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
         self.drawing = Drawing()
         self.turn = 1
@@ -23,10 +24,12 @@ class Game:
         """
         Launch the game and detect game events.
         """
-        
+
         pygame.init()
+
         screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
         screen.fill(BACKGROUND_COLOR)
+
         pygame.display.set_caption("Tic Tac Toe")
 
         while True:
@@ -41,10 +44,10 @@ class Game:
 
                         # column
 
-                        if pos[0] <= SCREEN_SIZE / 3:
+                        if pos[0] <= SCREEN_SIZE // 3:
                             column = 0
 
-                        elif pos[0] <= SCREEN_SIZE / 3 * 2:
+                        elif pos[0] <= SCREEN_SIZE // 3 * 2:
                             column = 1
 
                         elif pos [0] <= SCREEN_SIZE:
@@ -52,10 +55,10 @@ class Game:
                         
                         # row
 
-                        if pos[1] <= SCREEN_SIZE / 3:
+                        if pos[1] <= SCREEN_SIZE // 3:
                             row = 0
 
-                        elif pos[1] <= SCREEN_SIZE / 3 * 2:
+                        elif pos[1] <= SCREEN_SIZE // 3 * 2:
                             row = 1
 
                         elif pos [1] <= SCREEN_SIZE:
@@ -84,7 +87,9 @@ class Game:
 
                 self.end = True
                 pygame.display.update()
+
                 time.sleep(1)
+                
                 play_again = self.drawing.end_screen(screen)
                 
                 if play_again:

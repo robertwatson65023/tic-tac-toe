@@ -35,10 +35,11 @@ class Drawing:
         This method draws the game pieces (blue and yellow circles) on the screen based on the
         board configuration.
         """
-         
+        
+        size = SCREEN_SIZE / NB_COLUMN_ROW
+
         blue_circle = pygame.transform.scale(pygame.image.load("img/blue.png"), (70, 70))
         yellow_circle = pygame.transform.scale(pygame.image.load("img/yellow.png"), (70, 70))
-        size = SCREEN_SIZE / NB_COLUMN_ROW
 
         for i in range(NB_COLUMN_ROW):
             for j in range(NB_COLUMN_ROW):
@@ -82,10 +83,12 @@ class Drawing:
         """
 
         screen.fill(BACKGROUND_COLOR)
+
         font = pygame.font.Font("font/Roboto-Regular.ttf", 25)
         text = font.render("Press space key to play again!", True, (255,255,255))
         text_rect = text.get_rect()
         text_rect.center = (SCREEN_SIZE // 2, SCREEN_SIZE // 2)
+        
         screen.blit(text, text_rect)
         pygame.display.update()
 
