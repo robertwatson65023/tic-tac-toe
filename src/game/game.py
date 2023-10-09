@@ -6,6 +6,10 @@ from game.const import *
 from game.drawing import *
 
 class Game:
+    """
+    Class representing the Tic Tac Toe game.
+    """
+
     def __init__(self) -> None:
         self.board = [[0 for j in range(NB_COLUMN_ROW)] for i in range(NB_COLUMN_ROW)]
         self.drawing = Drawing()
@@ -13,6 +17,9 @@ class Game:
         self.end = False
 
     def launch(self):
+        """
+        Launch the game and detect game events.
+        """
         pygame.init()
         screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
         screen.fill(BACKGROUND_COLOR)
@@ -82,6 +89,17 @@ class Game:
                     self.launch()
 
     def modify_board(self, column, row, value):
+        """
+        Modify the game board based on the player's move.
+
+        Args:
+            column (int): The column where the player placed their piece.
+            row (int): The row where the player placed their piece.
+            value (int): The player's turn (1 or 2).
+
+        This method updates the board based on the player's move and advances the turn.
+        """
+
         if self.board[column][row] == 0:
             self.board[column][row] = value
             
@@ -92,6 +110,16 @@ class Game:
                 self.turn = 1
     
     def check_align(self):
+        """
+        Check for winning alignment on the game board.
+
+        Returns:
+            tuple: Start and end coordinates of the winning alignment.
+
+        This method checks for a winning alignment (three pieces in a row, column, or diagonal)
+        on the game board and returns the coordinates of the winning alignment.
+        """
+
         for i in range(NB_COLUMN_ROW):
             if self.board[i][0] != 0:
                 to_check = self.board[i][0]
