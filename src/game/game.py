@@ -23,6 +23,7 @@ class Game:
         """
         Launch the game and detect game events.
         """
+        
         pygame.init()
         screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
         screen.fill(BACKGROUND_COLOR)
